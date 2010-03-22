@@ -31,6 +31,15 @@ void normalize( StkFrames& buffer )
     }
 }
 
+StkFloat getrandfreq( StkFloat lofreq, StkFloat hifreq ) {
+
+    StkFloat randval = rand() / (RAND_MAX + 1.0);
+
+    return (randval * (hifreq - lofreq)) + lofreq;
+
+    // FIXME map exponentially
+
+}
 
 int main( void ) {
 
@@ -50,7 +59,7 @@ int main( void ) {
 
         // FIXME maybe factor this out since the starting phase wouldn't matter anyway
         SineWave thissine;
-        thissine.setFrequency( 10 );
+        thissine.setFrequency( getrandfreq( lofreq, hifreq ) );
 
         // older stk needs to do this loop manually:
         // newer stk you can just tick on an intermediate buffer and += it into
@@ -85,7 +94,7 @@ int main( void ) {
 
     std::cout << "all done" << std::endl;
 
-};
+}
 
 
 // vim:sw=4:ts=4:et:ai:ic:
