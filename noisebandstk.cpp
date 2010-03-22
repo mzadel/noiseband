@@ -40,14 +40,20 @@ StkFloat getrandfreq( StkFloat lofreq, StkFloat hifreq ) {
 
 }
 
+StkFloat numoctaves( StkFloat lofreq, StkFloat hifreq ) {
+    // return the number of octaves spanned by (lofreq,hifreq)
+    return log2( hifreq / lofreq );
+}
+
 int main( void ) {
 
     // FIXME take args on the command line
     StkFloat lengthseconds = 2;
     unsigned long numsamples = static_cast<unsigned long>(lengthseconds * Stk::sampleRate());
-    unsigned long numpartials = 100; // FIXME partials per octave
-    StkFloat lofreq = 100;
-    StkFloat hifreq = 200;
+    StkFloat lofreq = 10000;
+    StkFloat hifreq = 15000;
+    StkFloat partialsperoctave = 100.0;
+    unsigned long numpartials = static_cast<unsigned long>(partialsperoctave * numoctaves( lofreq, hifreq ));
 
     // final output
     StkFrames output(0.0, numsamples, 1);
@@ -55,6 +61,8 @@ int main( void ) {
     // sine ugen
     // FIXME make this use a bigger lookup table size
     SineWave thissine;
+
+    std::cout << "computing " << numpartials << " partials" << std::endl;
 
     for ( unsigned long i = 0; i < numpartials; i++ ) {
 
