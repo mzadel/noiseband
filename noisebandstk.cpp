@@ -50,9 +50,9 @@ int main( void ) {
     // FIXME take args on the command line
     StkFloat lengthseconds = 2;
     unsigned long numsamples = static_cast<unsigned long>(lengthseconds * Stk::sampleRate());
-    StkFloat lofreq = 10000;
-    StkFloat hifreq = 15000;
-    StkFloat partialsperoctave = 100.0;
+    StkFloat lofreq = 10;
+    StkFloat hifreq = 22000;
+    StkFloat partialsperoctave = 1500.0;
     unsigned long numpartials = static_cast<unsigned long>(partialsperoctave * numoctaves( lofreq, hifreq ));
 
     // final output
@@ -69,12 +69,17 @@ int main( void ) {
         //std::cout << "adding a sine" << std::endl;
         std::cout << "." << std::flush;
 
+        if ( i % 20 == 0 )
+            std::cout << " " << i << " " << std::flush;
+
         thissine.setFrequency( getrandfreq( lofreq, hifreq ) );
 
         // older stk needs to do this loop manually:
         // newer stk you can just tick on an intermediate buffer and += it into
         // the main output
         for ( unsigned long j = 0; j < numsamples; j++ ) {
+            // NB we're assuming here that we're not going to overflow the
+            // doubles
             output[j] += thissine.tick();
         }
 
