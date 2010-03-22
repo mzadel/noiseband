@@ -14,6 +14,8 @@
 // take args on the command line
 // doesn't sound white; maybe you need to correct for power as well?  lower
 //   freqs will have more power; maybe have to divide it out
+//   yes -- if you compare the spectrum to pink noise, it's the same; it's a
+//   linear plot wrt log frequency
 //   http://classes.yale.edu/Fractals/CA/OneOverF/PowerSpectrum/PowerSpectrum.html
 //   http://en.wikipedia.org/wiki/Colors_of_noise#Power-law_noise
 //   http://en.wikipedia.org/wiki/Power_spectral_density
