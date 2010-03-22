@@ -16,7 +16,7 @@
 #ifndef STK_SINEWAVE_H
 #define STK_SINEWAVE_H
 
-const unsigned long TABLE_SIZE = 2048;
+const unsigned long TABLE_SIZE = 16384;
 
 #include "Generator.h"
 
