@@ -52,13 +52,15 @@ int main( void ) {
     // final output
     StkFrames output(0.0, numsamples, 1);
 
+    // sine ugen
+    // FIXME make this use a bigger lookup table size
+    SineWave thissine;
+
     for ( unsigned long i = 0; i < numpartials; i++ ) {
 
         //std::cout << "adding a sine" << std::endl;
         std::cout << "." << std::flush;
 
-        // FIXME maybe factor this out since the starting phase wouldn't matter anyway
-        SineWave thissine;
         thissine.setFrequency( getrandfreq( lofreq, hifreq ) );
 
         // older stk needs to do this loop manually:
