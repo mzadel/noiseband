@@ -59,7 +59,6 @@ int main( void ) {
     StkFrames output(0.0, numsamples, 1);
 
     // sine ugen
-    // FIXME make this use a bigger lookup table size
     SineWave thissine;
 
     std::cout << "computing " << numpartials << " partials" << std::endl;
