@@ -24,11 +24,12 @@ int main( void ) {
 
     for ( unsigned long i = 0; i < numpartials; i++ ) {
 
-        std::cout << "adding a sine" << std::endl;
+        //std::cout << "adding a sine" << std::endl;
+        std::cout << "." << std::flush;
 
         // FIXME maybe factor this out since the starting phase wouldn't matter anyway
         SineWave thissine;
-        thissine.setFrequency( 100 );
+        thissine.setFrequency( 10 );
 
         // older stk needs to do this loop manually:
         // newer stk you can just tick on an intermediate buffer and += it into
@@ -41,10 +42,10 @@ int main( void ) {
 
     std::cout << "done computing" << std::endl;
 
-    std::string outfilename( "outfile.aiff" );
+    std::string outfilename( "outfile.wav" );
 
     // write to file
-    FileWrite outfile( outfilename, 1, FileWrite::FILE_AIF, Stk::STK_FLOAT32 );
+    FileWrite outfile( outfilename, 1, FileWrite::FILE_WAV, Stk::STK_FLOAT32 );
     outfile.write( output );
     outfile.close();
 
