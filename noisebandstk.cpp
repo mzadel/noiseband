@@ -63,23 +63,25 @@ int main( void ) {
 
     std::cout << "done computing" << std::endl;
 
-#if 0
+    normalize( output );
+
+    std::cout << "done normalising" << std::endl;
+
     std::string outfilename( "outfile.wav" );
 
     // write to file
-    FileWrite outfile( outfilename, 1, FileWrite::FILE_WAV, Stk::STK_FLOAT32 );
+    FileWrite outfile( outfilename, 1, FileWrite::FILE_WAV, Stk::STK_FLOAT64 );
     outfile.write( output );
     outfile.close();
 
     std::cout << "wrote to " << outfilename << std::endl;
-#endif
 
-    normalize( output );
-
+#if 0
     // just print out the values
     for ( unsigned long j = 0; j < numsamples; j++ ) {
         std::cout << j << " " << output[j] << std::endl;
     }
+#endif
 
     std::cout << "all done" << std::endl;
 
