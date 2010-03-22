@@ -3,8 +3,18 @@
 // noisebandstk.cpp
 //
 
-// /Users/mark/mcgill/research/thesis/researchfiles/phasetwo/garygranular/stk-4.3.0/src/SineWave.cpp
-// /Users/mark/mcgill/research/thesis/researchfiles/phasetwo/garygranular/stk-4.3.0/
+// time to compute broadband noise:
+//  StkFloat lofreq = 10;
+//  StkFloat hifreq = 22000;
+//  StkFloat partialsperoctave = 1500.0;
+//  computing 16654 partials
+//  real    14m46.404s
+
+// FIXME / TODO
+// take args on the command line
+// doesn't sound white; maybe you need to correct for power as well?  lower
+//   freqs will have more power; maybe have to divide it out
+//   http://classes.yale.edu/Fractals/CA/OneOverF/PowerSpectrum/PowerSpectrum.html
 
 #include "SineWave.h"
 #include "FileWrite.h"
@@ -47,7 +57,6 @@ StkFloat numoctaves( StkFloat lofreq, StkFloat hifreq ) {
 
 int main( void ) {
 
-    // FIXME take args on the command line
     StkFloat lengthseconds = 2;
     unsigned long numsamples = static_cast<unsigned long>(lengthseconds * Stk::sampleRate());
     StkFloat lofreq = 10;
