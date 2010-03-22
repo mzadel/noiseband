@@ -29,20 +29,20 @@ void normalize( StkFrames& buffer )
         for ( i=0; i<buffer.size(); i++ )
             buffer[i] *= max;
     }
+
 }
 
 StkFloat getrandfreq( StkFloat lofreq, StkFloat hifreq ) {
 
     StkFloat randval = rand() / (RAND_MAX + 1.0);
 
-    return (randval * (hifreq - lofreq)) + lofreq;
-
-    // FIXME map exponentially
+    return pow(hifreq/lofreq, randval) * lofreq;
 
 }
 
 int main( void ) {
 
+    // FIXME take args on the command line
     StkFloat lengthseconds = 2;
     unsigned long numsamples = static_cast<unsigned long>(lengthseconds * Stk::sampleRate());
     unsigned long numpartials = 100; // FIXME partials per octave
