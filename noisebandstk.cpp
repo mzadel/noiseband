@@ -42,6 +42,7 @@ int main( void ) {
 
     std::cout << "done computing" << std::endl;
 
+#if 0
     std::string outfilename( "outfile.wav" );
 
     // write to file
@@ -50,6 +51,14 @@ int main( void ) {
     outfile.close();
 
     std::cout << "wrote to " << outfilename << std::endl;
+#endif
+
+    // just print out the values
+    for ( unsigned long j = 0; j < numsamples; j++ ) {
+        std::cout << j << " " << output[j] << std::endl;
+    }
+
+    std::cout << "all done" << std::endl;
 
 };
 
