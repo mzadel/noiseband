@@ -20,22 +20,20 @@ int main( void ) {
 
     // final output
     StkFrames output(0.0, numsamples, 1);
-    StkFrames iterationoutput(numsamples, 1);
 
     for ( unsigned long i = 0; i < numpartials; i++ ) {
 
         std::cout << "adding a sine" << std::endl;
 
+        // FIXME maybe factor this out since the starting phase wouldn't matter anyway
         SineWave thissine;
-        StkFrames thisoutput(0.0, numsamples, 1);
-
         thissine.setFrequency( 100 );
-        thissine.tick( thisoutput );
-        //output += thisoutput; // possible in newer stk
 
         // older stk needs to do this loop manually:
+        // newer stk you can just tick on an intermediate buffer and += it into
+        // the main output
         for ( unsigned long j = 0; j < numsamples; j++ ) {
-            output[j] += iterationoutput[i];
+            output[j] += thissine.tick();
         }
 
     }
