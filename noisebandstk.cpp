@@ -11,6 +11,27 @@
 
 //using namespace stk; // needed for newer stk
 
+void normalize( StkFrames& buffer )
+{
+
+    // this code is from FileWvIn class
+
+    size_t i;
+    StkFloat max = 0.0;
+
+    for ( i=0; i<buffer.size(); i++ ) {
+        if ( fabs( buffer[i] ) > max )
+            max = (StkFloat) fabs((double) buffer[i]);
+    }
+
+    if (max > 0.0) {
+        max = 1.0 / max;
+        for ( i=0; i<buffer.size(); i++ )
+            buffer[i] *= max;
+    }
+}
+
+
 int main( void ) {
 
     StkFloat lengthseconds = 2;
@@ -52,6 +73,8 @@ int main( void ) {
 
     std::cout << "wrote to " << outfilename << std::endl;
 #endif
+
+    normalize( output );
 
     // just print out the values
     for ( unsigned long j = 0; j < numsamples; j++ ) {
