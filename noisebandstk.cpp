@@ -7,6 +7,7 @@
 // /Users/mark/mcgill/research/thesis/researchfiles/phasetwo/garygranular/stk-4.3.0/
 
 #include "SineWave.h"
+#include "FileWvOut.h"
 
 //using namespace stk; // needed for newer stk
 
@@ -38,7 +39,16 @@ int main( void ) {
 
     }
 
-    std::cout << "done" << std::endl;
+    std::cout << "done computing" << std::endl;
+
+    std::string outfilename( "outfile.aiff" );
+
+    // write to file
+    FileWvOut outfile( outfilename, 1, FileWrite::FILE_AIF, Stk::STK_FLOAT32 );
+    outfile.tick( output );
+    outfile.closeFile();
+
+    std::cout << "wrote to " << outfilename << std::endl;
 
 };
 
