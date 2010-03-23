@@ -41,6 +41,8 @@ void normalize( StkFrames& buffer )
             max = (StkFloat) fabs((double) buffer[i]);
     }
 
+    std::cout << "normalize(): max amplitude found is " << max << std::endl;
+
     if (max > 0.0) {
         max = 1.0 / max;
         for ( i=0; i<buffer.size(); i++ )
