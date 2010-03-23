@@ -19,6 +19,7 @@
 //   http://classes.yale.edu/Fractals/CA/OneOverF/PowerSpectrum/PowerSpectrum.html
 //   http://en.wikipedia.org/wiki/Colors_of_noise#Power-law_noise
 //   http://en.wikipedia.org/wiki/Power_spectral_density
+// try making rand freq linear to see if you get white noise
 
 #include "SineWave.h"
 #include "FileWrite.h"
@@ -46,13 +47,15 @@ void normalize( StkFrames& buffer )
 
 }
 
-StkFloat getrandfreq( StkFloat lofreq, StkFloat hifreq ) {
+StkFloat getlograndfreq( StkFloat lofreq, StkFloat hifreq ) {
 
     StkFloat randval = rand() / (RAND_MAX + 1.0);
 
     return pow(hifreq/lofreq, randval) * lofreq;
 
 }
+
+    //return randval * (hifreq-lofreq) + lofreq;
 
 StkFloat numoctaves( StkFloat lofreq, StkFloat hifreq ) {
     // return the number of octaves spanned by (lofreq,hifreq)
@@ -84,7 +87,7 @@ int main( void ) {
         if ( i % 20 == 0 )
             std::cout << " " << i << " " << std::flush;
 
-        thissine.setFrequency( getrandfreq( lofreq, hifreq ) );
+        thissine.setFrequency( getlograndfreq( lofreq, hifreq ) );
 
         // older stk needs to do this loop manually:
         // newer stk you can just tick on an intermediate buffer and += it into
