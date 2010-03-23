@@ -26,6 +26,8 @@
 
 //using namespace stk; // needed for newer stk
 
+enum { WHITENOISE = 0, PINKNOISE };
+
 void normalize( StkFrames& buffer )
 {
 
@@ -76,6 +78,7 @@ int main( void ) {
     StkFloat hifreq = 22000;
     StkFloat partialsperoctave = 1500.0;
     unsigned long numpartials = static_cast<unsigned long>(partialsperoctave * numoctaves( lofreq, hifreq ));
+    unsigned int noisetype = WHITENOISE;
 
     // final output
     StkFrames output(0.0, numsamples, 1);
@@ -93,7 +96,11 @@ int main( void ) {
         if ( i % 20 == 0 )
             std::cout << " " << i << " " << std::flush;
 
-        thissine.setFrequency( getlograndfreq( lofreq, hifreq ) );
+        if ( noisetype == WHITENOISE ) {
+            thissine.setFrequency( getlinrandfreq( lofreq, hifreq ) );
+        } else { // PINKNOISE
+            thissine.setFrequency( getlograndfreq( lofreq, hifreq ) );
+        }
 
         // older stk needs to do this loop manually:
         // newer stk you can just tick on an intermediate buffer and += it into
