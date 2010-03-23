@@ -55,7 +55,13 @@ StkFloat getlograndfreq( StkFloat lofreq, StkFloat hifreq ) {
 
 }
 
-    //return randval * (hifreq-lofreq) + lofreq;
+StkFloat getlinrandfreq( StkFloat lofreq, StkFloat hifreq ) {
+
+    StkFloat randval = rand() / (RAND_MAX + 1.0);
+
+    return randval * (hifreq-lofreq) + lofreq;
+
+}
 
 StkFloat numoctaves( StkFloat lofreq, StkFloat hifreq ) {
     // return the number of octaves spanned by (lofreq,hifreq)
