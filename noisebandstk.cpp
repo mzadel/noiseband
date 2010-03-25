@@ -24,9 +24,25 @@
 #include "SineWave.h"
 #include "FileWrite.h"
 
+#include  <getopt.h>
+
 //using namespace stk; // needed for newer stk
 
 enum { WHITENOISE = 0, PINKNOISE };
+
+static struct option long_options[] =
+{
+    /* These options set a flag. */
+/*  {"verbose", no_argument,       &verbose_flag, 1}, */
+/*  {"brief",   no_argument,       &verbose_flag, 0}, */
+    /* These options don't set a flag.  We distinguish them by their indices. */
+    {"add",     no_argument,       0, 'a'},
+    {"append",  no_argument,       0, 'b'},
+    {"delete",  required_argument, 0, 'd'},
+    {"create",  required_argument, 0, 'c'},
+    {"file",    required_argument, 0, 'f'},
+    {0, 0, 0, 0}
+};
 
 void normalize( StkFrames& buffer )
 {
@@ -72,7 +88,7 @@ StkFloat numoctaves( StkFloat lofreq, StkFloat hifreq ) {
     return log2( hifreq / lofreq );
 }
 
-int main( void ) {
+int main( int argc, char **argv ) {
 
     StkFloat lengthseconds = 2;
     unsigned long numsamples = static_cast<unsigned long>(lengthseconds * Stk::sampleRate());
@@ -82,6 +98,51 @@ int main( void ) {
     unsigned long numpartials = static_cast<unsigned long>(partialsperoctave * numoctaves( lofreq, hifreq ));
     unsigned int noisetype = WHITENOISE;
 
+    // -(option parsing)--------------------------------------------------------
+
+    int optionfound = -1;
+    while( 1 ) {
+
+        int option_index = 0; // getopt_long stores the option index here.
+
+        optionfound = getopt_long (argc, argv, "abc:d:f:", long_options, &option_index);
+
+        // end of options
+        if (optionfound == -1)
+            break;
+
+        switch (optionfound) {
+
+            case 'a':
+                puts ("option -a\n");
+                break;
+
+            case 'b':
+                puts ("option -b\n");
+                break;
+
+            case 'c':
+                printf ("option -c with value `%s'\n", optarg);
+                break;
+
+            case 'd':
+                printf ("option -d with value `%s'\n", optarg);
+                break;
+
+            case 'f':
+                printf ("option -f with value `%s'\n", optarg);
+                break;
+
+            default:
+                abort();
+
+        }
+
+    };
+
+
+    // -(main routine)----------------------------------------------------------
+#if 0
     // final output
     StkFrames output(0.0, numsamples, 1);
 
@@ -138,7 +199,7 @@ int main( void ) {
 #endif
 
     std::cout << "all done" << std::endl;
-
+#endif
 }
 
 
