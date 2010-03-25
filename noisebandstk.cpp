@@ -30,13 +30,7 @@
 
 enum { WHITENOISE = 0, PINKNOISE };
 
-static struct option long_options[] =
-{
-    {"add",         no_argument,       0, 'a'},
-    {"append",      no_argument,       0, 'b'},
-    {"delete",      required_argument, 0, 'd'},
-    {"create",      required_argument, 0, 'c'},
-    {"file",        required_argument, 0, 'f'},
+static struct option long_options[] = {
     {"length",      required_argument, 0, 'l'},
     {"startfreq",   required_argument, 0, 's'},
     {"endfreq",     required_argument, 0, 'e'},
@@ -44,6 +38,7 @@ static struct option long_options[] =
     {"numpartials", required_argument, 0, 'n'}, // total number of partials
     {"white",       no_argument,       0, 'w'},
     {"pink",        no_argument,       0, 'p'},
+    {"outfile",     required_argument, 0, 'o'},
     {0, 0, 0, 0}
 };
 
