@@ -4,11 +4,13 @@
 //
 // bandlimited noise by a brute force, additive synthesis method
 //
+// alternatives: FFT-1, or a bandpass filter on broadband noise
+//
 
 // time to compute broadband noise:
-//  StkFloat lofreq = 10;
-//  StkFloat hifreq = 22000;
-//  StkFloat partialsperoctave = 1500.0;
+//  lofreq = 10;
+//  hifreq = 22000;
+//  partialsperoctave = 1500.0;
 //  computing 16654 partials
 //  real    14m46.404s
 
