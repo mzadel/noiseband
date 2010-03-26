@@ -37,7 +37,7 @@ static struct option long_options[] = {
     {"ppo",         required_argument, 0, 'p'}, // partials per octave
     {"numpartials", required_argument, 0, 'n'}, // total number of partials
     {"white",       no_argument,       0, 'w'},
-    {"pink",        no_argument,       0, 'p'},
+    {"pink",        no_argument,       0, 'k'},
     {"outfile",     required_argument, 0, 'o'},
     {0, 0, 0, 0}
 };
@@ -95,6 +95,7 @@ int main( int argc, char **argv ) {
     StkFloat partialsperoctave = 1500.0;
     unsigned long numpartials = static_cast<unsigned long>(partialsperoctave * numoctaves( lofreq, hifreq ));
     unsigned int noisetype = WHITENOISE;
+    std::string outfilename( "outfile.wav" );
 
     // -(option parsing)--------------------------------------------------------
 
@@ -103,7 +104,7 @@ int main( int argc, char **argv ) {
 
         int option_index = 0; // getopt_long stores the option index here.
 
-        optionfound = getopt_long (argc, argv, "abc:d:f:", long_options, &option_index);
+        optionfound = getopt_long (argc, argv, "l:s:e:p:n:wko:", long_options, &option_index);
 
         // end of options
         if (optionfound == -1)
@@ -111,24 +112,37 @@ int main( int argc, char **argv ) {
 
         switch (optionfound) {
 
-            case 'a':
-                puts ("option -a\n");
+            case 'l':
+                lengthseconds = atof( optarg );
                 break;
 
-            case 'b':
-                puts ("option -b\n");
+            case 's':
+                lofreq = atof( optarg );
                 break;
 
-            case 'c':
-                printf ("option -c with value `%s'\n", optarg);
+            case 'e':
+                hifreq = atof( optarg );
                 break;
 
-            case 'd':
-                printf ("option -d with value `%s'\n", optarg);
+            case 'p':
+                numpartials = static_cast<unsigned long>(atof(optarg) * numoctaves( lofreq, hifreq ));
+                // FIXME assumes the lo/hi freqs have been specified; fix that by putting this at the end somehow
                 break;
 
-            case 'f':
-                printf ("option -f with value `%s'\n", optarg);
+            case 'n':
+                numpartials = atol(optarg);
+                break;
+
+            case 'w':
+                noisetype = WHITENOISE;
+                break;
+
+            case 'k':
+                noisetype = PINKNOISE;
+                break;
+
+            case 'o':
+                outfilename = optarg;
                 break;
 
             default:
@@ -179,8 +193,6 @@ int main( int argc, char **argv ) {
     normalize( output );
 
     std::cout << "done normalising" << std::endl;
-
-    std::string outfilename( "outfile.wav" );
 
     // write to file
     FileWrite outfile( outfilename, 1, FileWrite::FILE_WAV, Stk::STK_FLOAT64 );
