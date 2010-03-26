@@ -2,6 +2,8 @@
 //
 // noisebandstk.cpp
 //
+// bandlimited noise by a brute force, additive synthesis method
+//
 
 // time to compute broadband noise:
 //  StkFloat lofreq = 10;
