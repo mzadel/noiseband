@@ -1,11 +1,11 @@
 
 APPLICATION=noiseband
 
-OBJS=noisebandstk.o Stk.o FileWrite.o Generator.o SineWave.o
+OBJS=noiseband.o Stk.o FileWrite.o Generator.o SineWave.o
 
 FLAGS+=-O3 -DNDEBUG
 # uncomment for little endian machines
-FLAGS+=-D__LITTLE_ENDIAN__
+#FLAGS+=-D__LITTLE_ENDIAN__
 
 all: $(APPLICATION)
 

@@ -1,6 +1,6 @@
 
 //
-// noisebandstk.cpp
+// noiseband.cpp
 //
 // bandlimited noise by a brute force, additive synthesis method
 //
