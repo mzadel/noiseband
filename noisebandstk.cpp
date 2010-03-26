@@ -18,6 +18,7 @@
 //  add -h help message
 //  seed random generator with srand (eg, say you want to do it twice for
 //   two-channel decorrelated noise)
+//  add option for 16 or 24-bit output instead of 64-bit floats
 
 #include "SineWave.h"
 #include "FileWrite.h"
