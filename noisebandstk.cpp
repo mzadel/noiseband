@@ -39,7 +39,7 @@ static struct option long_options[] = {
 void normalize( StkFrames& buffer )
 {
 
-    // this code is from FileWvIn class
+    // this code is from the STK FileWvIn class
 
     size_t i;
     StkFloat max = 0.0;
