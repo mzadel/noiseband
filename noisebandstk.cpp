@@ -92,13 +92,14 @@ int main( int argc, char **argv ) {
     StkFloat lofreq = 10;
     StkFloat hifreq = 22000;
     StkFloat partialsperoctave = 1500.0;
-    unsigned long numpartials = static_cast<unsigned long>(partialsperoctave * numoctaves( lofreq, hifreq ));
+    unsigned long numpartials = 0;
     unsigned int noisetype = WHITENOISE;
     std::string outfilename( "outfile.wav" );
 
     // -(option parsing)--------------------------------------------------------
 
     int optionfound = -1;
+    unsigned char ppospecified = 1;
     while( 1 ) {
 
         int option_index = 0; // getopt_long stores the option index here.
@@ -124,12 +125,13 @@ int main( int argc, char **argv ) {
                 break;
 
             case 'p':
-                numpartials = static_cast<unsigned long>(atof(optarg) * numoctaves( lofreq, hifreq ));
-                // FIXME assumes the lo/hi freqs have been specified; fix that by putting this at the end somehow
+                partialsperoctave = atof(optarg);
+                ppospecified = 1;
                 break;
 
             case 'n':
                 numpartials = atol(optarg);
+                ppospecified = 0;
                 break;
 
             case 'w':
@@ -152,6 +154,11 @@ int main( int argc, char **argv ) {
     };
 
     unsigned long numsamples = static_cast<unsigned long>(lengthseconds * Stk::sampleRate());
+
+    // need to do this at the end since it depends on lofreq/hifreq and can be
+    // overridden by --numpartials
+    if (ppospecified)
+        numpartials = static_cast<unsigned long>(partialsperoctave * numoctaves( lofreq, hifreq ));
 
     std::cout << "lengthseconds " << lengthseconds << std::endl;
     std::cout << "numsamples " << numsamples  << std::endl;
