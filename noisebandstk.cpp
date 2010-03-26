@@ -160,6 +160,11 @@ int main( int argc, char **argv ) {
     if (ppospecified)
         numpartials = static_cast<unsigned long>(partialsperoctave * numoctaves( lofreq, hifreq ));
 
+    if ( lofreq >= hifreq )
+        std::cout << "WARNING: low freq (" << lofreq
+            << ") is not lower than high freq (" << hifreq
+            << ")" << std::endl;
+
     std::cout << "lengthseconds " << lengthseconds << std::endl;
     std::cout << "numsamples " << numsamples  << std::endl;
     std::cout << "lofreq " << lofreq  << std::endl;
