@@ -89,7 +89,6 @@ StkFloat numoctaves( StkFloat lofreq, StkFloat hifreq ) {
 int main( int argc, char **argv ) {
 
     StkFloat lengthseconds = 2;
-    unsigned long numsamples = static_cast<unsigned long>(lengthseconds * Stk::sampleRate());
     StkFloat lofreq = 10;
     StkFloat hifreq = 22000;
     StkFloat partialsperoctave = 1500.0;
@@ -152,6 +151,7 @@ int main( int argc, char **argv ) {
 
     };
 
+    unsigned long numsamples = static_cast<unsigned long>(lengthseconds * Stk::sampleRate());
 
     std::cout << "lengthseconds " << lengthseconds << std::endl;
     std::cout << "numsamples " << numsamples  << std::endl;
