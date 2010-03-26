@@ -10,6 +10,9 @@
 //  computing 16654 partials
 //  real    14m46.404s
 
+// FIXME / TODO
+//  add -h help message
+
 #include "SineWave.h"
 #include "FileWrite.h"
 
