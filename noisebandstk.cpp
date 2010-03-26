@@ -165,23 +165,9 @@ int main( int argc, char **argv ) {
             << ") is not lower than high freq (" << hifreq
             << ")" << std::endl;
 
-    std::cout << "lengthseconds " << lengthseconds << std::endl;
-    std::cout << "numsamples " << numsamples  << std::endl;
-    std::cout << "lofreq " << lofreq  << std::endl;
-    std::cout << "hifreq " << hifreq  << std::endl;
-    std::cout << "partialsperoctave " << partialsperoctave  << std::endl;
-    std::cout << "numpartials " << numpartials << std::endl;
-    if ( noisetype == WHITENOISE )
-        std::cout << "noisetype " << "WHITENOISE" << std::endl;
-    else if  ( noisetype == PINKNOISE )
-        std::cout << "noisetype " << "PINKNOISE" << std::endl;
-    std::cout << "outfilename " << outfilename << std::endl;
-
-
-
 
     // -(main routine)----------------------------------------------------------
-#if 0
+
     // final output
     StkFrames output(0.0, numsamples, 1);
 
@@ -236,7 +222,7 @@ int main( int argc, char **argv ) {
 #endif
 
     std::cout << "all done" << std::endl;
-#endif
+
 }
 
 
