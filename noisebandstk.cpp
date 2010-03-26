@@ -187,10 +187,9 @@ int main( int argc, char **argv ) {
         }
 
         // NB just changing the frequency in this way but using the same
-        // SineWave ugen effectively also effectively randomises the starting
-        // phase.  we don't want all of the partials phase aligned at the start
-        // since that leads to a big amplitude spike (throwing off the
-        // normalisation step).
+        // SineWave ugen effectively randomises the starting phase.  we don't
+        // want all of the partials phase aligned at the start since that leads
+        // to a big amplitude spike (throwing off the normalisation step).
 
         // older stk needs to do this loop manually:
         // newer stk you can just tick on an intermediate buffer and += it into
