@@ -16,6 +16,8 @@
 
 // FIXME / TODO
 //  add -h help message
+//  seed random generator with srand (eg, say you want to do it twice for
+//   two-channel decorrelated noise)
 
 #include "SineWave.h"
 #include "FileWrite.h"
