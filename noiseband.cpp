@@ -4,7 +4,7 @@
 //
 // bandlimited noise by a brute force, additive synthesis method
 //
-// alternatives: FFT-1, or a bandpass filter on broadband noise
+// alternatives: FFT^-1, or a bandpass filter on broadband noise
 //
 
 // time to compute broadband noise:
