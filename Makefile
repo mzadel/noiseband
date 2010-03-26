@@ -4,7 +4,7 @@ APPLICATION=noiseband
 OBJS=noiseband.o Stk.o FileWrite.o Generator.o SineWave.o
 
 FLAGS+=-O3 -DNDEBUG
-# comment for big endian machines (such as PowerPC)
+# comment this out for big endian machines (such as PowerPC)
 FLAGS+=-D__LITTLE_ENDIAN__
 
 all: $(APPLICATION)
