@@ -167,7 +167,7 @@ int main( int argc, char **argv ) {
 
     for ( unsigned long i = 0; i < numpartials; i++ ) {
 
-        //std::cout << "adding a sine" << std::endl;
+        // progress indicator
         std::cout << "." << std::flush;
 
         if ( i % 20 == 0 )
@@ -184,7 +184,7 @@ int main( int argc, char **argv ) {
         // the main output
         for ( unsigned long j = 0; j < numsamples; j++ ) {
             // NB we're assuming here that we're not going to overflow the
-            // doubles
+            // doubles.  max I've seen is ~200.0, so we should be safe.
             output[j] += thissine.tick();
         }
 
@@ -202,13 +202,6 @@ int main( int argc, char **argv ) {
     outfile.close();
 
     std::cout << "wrote to " << outfilename << std::endl;
-
-#if 0
-    // just print out the values
-    for ( unsigned long j = 0; j < numsamples; j++ ) {
-        std::cout << j << " " << output[j] << std::endl;
-    }
-#endif
 
     std::cout << "all done" << std::endl;
 
