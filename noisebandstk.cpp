@@ -24,8 +24,6 @@
 
 #include  <getopt.h>
 
-//using namespace stk; // needed for newer stk
-
 enum { WHITENOISE = 0, PINKNOISE };
 
 static struct option long_options[] = {
@@ -193,9 +191,6 @@ int main( int argc, char **argv ) {
         // want all of the partials phase aligned at the start since that leads
         // to a big amplitude spike (throwing off the normalisation step).
 
-        // older stk needs to do this loop manually:
-        // newer stk you can just tick on an intermediate buffer and += it into
-        // the main output
         for ( unsigned long j = 0; j < numsamples; j++ ) {
             // NB we're assuming here that we're not going to overflow the
             // doubles.  max I've seen is ~200.0, so we should be safe.
