@@ -154,7 +154,7 @@ int main( int argc, char **argv ) {
 
 
     // -(main routine)----------------------------------------------------------
-#if 0
+
     // final output
     StkFrames output(0.0, numsamples, 1);
 
@@ -209,7 +209,7 @@ int main( int argc, char **argv ) {
 #endif
 
     std::cout << "all done" << std::endl;
-#endif
+
 }
 
 
