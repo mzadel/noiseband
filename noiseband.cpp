@@ -24,6 +24,8 @@
 #include "FileWrite.h"
 
 #include  <getopt.h>
+#include  <math.h>
+#include  <stdlib.h>
 
 enum { WHITENOISE = 0, PINKNOISE };
 

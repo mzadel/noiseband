@@ -38,6 +38,8 @@
 
 #include "Stk.h"
 
+#include <stdlib.h>
+
 StkFloat Stk :: srate_ = (StkFloat) SRATE;
 std::string Stk :: rawwavepath_ = RAWWAVE_PATH;
 const Stk::StkFormat Stk :: STK_SINT8   = 0x1;
