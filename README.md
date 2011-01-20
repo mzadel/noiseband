@@ -17,7 +17,7 @@ seconds.
 
     noiseband [OPTIONS]
 
-Where the options are:
+where the options are:
 
     -l <seconds>, --length <seconds>
         the output file length in seconds
