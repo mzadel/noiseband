@@ -64,7 +64,27 @@ floats.  Internal computations are done in terms of 64-bit floats (doubles).
 
 ## Examples
 
-FIXME
+Generate two seconds of noise, with partials between 10Hz and 22000Hz and 1500
+partials per octave (the default behaviour):
+
+    noiseband
+
+Generate five seconds of pink noise between 440Hz and 880Hz with 1000 partials
+per octave:
+
+    noiseband -l 5 -k -s 440 -e 880 -p 1000
+
+The same, using long arguments:
+
+    noiseband --length 5 --pink --startfreq 440 --endfreq 880 --ppo 1000
+
+Generate 10 random partials between 1000Hz and 1100Hz:
+
+    noiseband -s 1000 -e 1100 -n 10
+
+Write to file newnoise.wav:
+
+    noiseband --outfile newnoise.wav
 
 
 ## License
