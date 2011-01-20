@@ -25,13 +25,6 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-// time to compute broadband noise:
-//  lofreq = 10;
-//  hifreq = 22000;
-//  partialsperoctave = 1500.0;
-//  computing 16654 partials
-//  real    14m46.404s
-
 // FIXME / TODO
 //  add -h help message
 //  seed random generator with srand (eg, say you want to do it twice for
