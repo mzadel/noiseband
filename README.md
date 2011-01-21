@@ -53,8 +53,8 @@ where the options are:
 
 ## Remarks
 
-The sampling rate is 44100 Hz, and the output wav files are mono, using 32-bit
-floats.  Internal computations are done in terms of 64-bit floats (doubles).
+The sampling rate is 44100 Hz, and the output wav files are mono, using 64-bit
+floats  (doubles).  Internal computations are done in terms of 64-bit floats.
 
 ## Compiling
 
