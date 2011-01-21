@@ -221,7 +221,7 @@ int main( int argc, char **argv ) {
     std::cout << "done normalising" << std::endl;
 
     // write to file
-    FileWrite outfile( outfilename, 1, FileWrite::FILE_WAV, Stk::STK_FLOAT64 );
+    FileWrite outfile( outfilename, 1, FileWrite::FILE_WAV, Stk::STK_SINT16 );
     outfile.write( output );
     outfile.close();
 
